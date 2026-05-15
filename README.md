@@ -14,7 +14,6 @@ Scoped to a single repository. Go to:
 
 **Repository → Settings → Actions → Runners → New self-hosted runner**
 
-
 ```bash
 # Configure (use the token GitHub gives you)
 ./config.sh --url https://github.com/<org>/<repo> --token <token>
@@ -49,8 +48,8 @@ The configuration and startup commands are identical, only the `--url` changes:
 
 The workflow runs `configurations/basic.json`, which checks:
 
-- `has_license` — a `LICENSE` file must exist in the repository root
-- `has_citation` — a valid `CITATION.cff` file must exist in the repository root
+- `has_license`: a `LICENSE` file must exist in the repository root
+- `has_citation`: a valid `CITATION.cff` file must exist in the repository root
 
 Results are uploaded to your DashVERSE instance if `DASHVERSE_TOKEN` is provided.
 

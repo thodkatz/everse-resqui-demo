@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run resqui
-        uses: EVERSE-ResearchSoftware/QualityPipelines@main
+        uses: thodkatz/QualityPipelines@main
         with:
           config: configurations/basic.json
           github_token: ${{ secrets.GITHUB_TOKEN }}
