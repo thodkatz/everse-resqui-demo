@@ -1,10 +1,12 @@
 # Intro
 
 Attempting to run a self hosted github runner that connects with the self hosted instance https://github.com/thodkatz/DashVERSE within the LAN of INAB-CERTH.
+We assume that resqui should run on every push via github actions.
 
 ## Self-hosted runner setup
 
-A self-hosted runner is a process running on your own machine (or VM) that picks up GitHub Actions jobs. It connects outbound to GitHub over HTTPS, so no inbound ports or firewall rules are needed. This is the right choice when your DashVERSE instance is on a private LAN that GitHub-hosted runners cannot reach.
+A self-hosted runner is needed because DashVERSE is on a private LAN. The runner will be hosted within the VM that DashVERSE is deployed. If resqui checks become more complicated, we can consider a separate vm, or more resources.
+
 
 ### Option 1: Repository-level runner
 
@@ -12,7 +14,6 @@ Scoped to a single repository. Go to:
 
 **Repository → Settings → Actions → Runners → New self-hosted runner**
 
-Follow the instructions GitHub provides to download, configure, and start the runner:
 
 ```bash
 # Configure (use the token GitHub gives you)
@@ -32,7 +33,7 @@ Scoped to all repositories in the org. A single runner handles every repo withou
 
 **Organization → Settings → Actions → Runners → New self-hosted runner**
 
-The configuration and startup commands are identical — only the `--url` changes:
+The configuration and startup commands are identical, only the `--url` changes:
 
 ```bash
 ./config.sh --url https://github.com/<org> --token <token>
@@ -42,7 +43,7 @@ The configuration and startup commands are identical — only the `--url` change
 
 1. Create a `resqui` environment in your repository: **Settings → Environments → New environment**
 2. Add `DASHVERSE_TOKEN` as a secret to that environment (obtain it from your DashVERSE instance via `make jwt`)
-3. Push to the repository — the workflow in `.github/workflows/resqui.yml` triggers automatically on every push and pull request
+3. Push to the repository, the workflow in `.github/workflows/resqui.yml` triggers automatically on every push and pull request
 
 ## What the workflow checks
 
