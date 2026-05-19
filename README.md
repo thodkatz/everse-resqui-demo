@@ -44,6 +44,22 @@ The configuration and startup commands are identical, only the `--url` changes:
 2. Add `DASHVERSE_TOKEN` as a secret to that environment (obtain it from your DashVERSE instance via `make jwt`)
 3. Push to the repository, the workflow in `.github/workflows/resqui.yml` triggers automatically on every push and pull request
 
+### Organization-level secret (recommended)
+
+Instead of adding `DASHVERSE_TOKEN` to every repository individually, add it once at the organization level:
+
+**Organization → Settings → Secrets and variables → Actions → New organization secret**
+
+Set the access policy to "All repositories" or select specific ones. The workflow file stays unchanged — `${{ secrets.DASHVERSE_TOKEN }}` resolves from the org level automatically when no repo-level secret with the same name exists.
+
+To generate a long-lived token from your DashVERSE instance:
+
+```bash
+# ~31 years expiry (effectively non-expiring)
+./scripts/generate-jwt.sh dashverse web_user 999999999
+```
+
+
 ## What the workflow checks
 
 The workflow runs `configurations/basic.json`, which checks:
