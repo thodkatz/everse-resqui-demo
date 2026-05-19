@@ -62,10 +62,24 @@ To generate a long-lived token from your DashVERSE instance:
 
 ## What the workflow checks
 
-The workflow runs `configurations/basic.json`, which checks:
+The workflow runs `configurations/basic.json`, which checks the following indicators using the [RSFC](https://github.com/oeg-upm/rsfc) and [OpenSSF Scorecard](https://github.com/ossf/scorecard) plugins:
 
-- `has_license`: a `LICENSE` file must exist in the repository root
-- `has_citation`: a valid `CITATION.cff` file must exist in the repository root
+| Indicator | Plugin |
+|-----------|--------|
+| `archived_in_software_heritage` | RSFC |
+| `descriptive_metadata` | RSFC |
+| `software_has_citation` | RSFC |
+| `software_has_license` | RSFC |
+| `has_releases` | RSFC |
+| `repository_workflows` | RSFC |
+| `requirements_specified` | RSFC |
+| `persistent_and_unique_identifier` | RSFC |
+| `software_has_documentation` | RSFC |
+| `software_has_tests` | RSFC |
+| `version_control_use` | RSFC |
+| `versioning_standards_use` | RSFC |
+| `has_ci_tests` | OpenSSF Scorecard |
+| `has_published_package` | OpenSSF Scorecard |
 
 Results are uploaded to your DashVERSE instance if `DASHVERSE_TOKEN` is provided.
 
