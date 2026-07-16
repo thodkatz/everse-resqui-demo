@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run resqui
-        uses: thodkatz/QualityPipelines@main
+        uses: thodkatz/QualityPipelines@stable-lan-integration
         with:
           config: configurations/basic.json
           github_token: ${{ secrets.GITHUB_TOKEN }}
