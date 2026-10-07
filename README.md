@@ -30,16 +30,9 @@ fit = fit_logistic(times, od600)
 print(fit.doubling_time)
 ```
 
-## Tests
-
-```bash
-pip install ".[test]"
-pytest
-```
-
 ## Citation
 
-See [CITATION.cff](CITATION.cff).
+Please cite the repository URL.
 
 ## License
 
