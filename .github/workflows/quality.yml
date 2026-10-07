@@ -1,0 +1,15 @@
+name: Software quality
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  resqui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check software quality indicators
+        uses: BiodataAnalysisGroup/eosc-arena-software-quality-action@main

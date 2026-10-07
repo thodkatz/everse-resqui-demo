@@ -1,0 +1,3 @@
+# growthcurve
+
+fits growth curves
