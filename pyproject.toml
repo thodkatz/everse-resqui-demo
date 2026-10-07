@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "growthcurve"
+version = "0.1.0"
+description = "Fit logistic growth curves to optical density measurements"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "EOSC Arena software quality example" }]
+keywords = ["microbiology", "growth curve", "logistic model", "OD600"]
+dependencies = ["numpy>=1.24", "scipy>=1.10", "pandas>=2.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]

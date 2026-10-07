@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "growthcurve: logistic growth curve fitting"
+version: 0.1.0
+date-released: 2026-10-07
+license: MIT
+repository-code: "https://github.com/thodkatz/everse-resqui-demo"
+authors:
+  - name: "EOSC Arena software quality example"
+keywords:
+  - microbiology
+  - growth curve
