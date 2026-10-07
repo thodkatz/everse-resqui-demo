@@ -11,5 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The indicators in .resqui.json are the ones this project commits to.
+      # Any of them failing, or not being checked at all, fails the job.
       - name: Check software quality indicators
         uses: BiodataAnalysisGroup/eosc-arena-software-quality-action@main
+        with:
+          config: .resqui.json
+          fail-on: fail,not_run

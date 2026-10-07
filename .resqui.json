@@ -1,0 +1,13 @@
+{
+  "indicators": [
+    { "name": "software_has_license", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/software_has_license" },
+    { "name": "software_has_citation", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/software_has_citation" },
+    { "name": "software_has_documentation", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/software_has_documentation" },
+    { "name": "descriptive_metadata", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/descriptive_metadata" },
+    { "name": "software_has_tests", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/software_has_tests" },
+    { "name": "requirements_specified", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/requirements_specified" },
+    { "name": "versioning_standards_use", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/versioning_standards_use" },
+    { "name": "repository_workflows", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/repository_workflows" },
+    { "name": "version_control_use", "plugin": "RSFC", "@id": "https://w3id.org/everse/i/indicators/version_control_use" }
+  ]
+}
