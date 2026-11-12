@@ -1,0 +1,56 @@
+name: Assess the demo fleet
+
+# Assesses the thodkatz/dashverse-demo-* repositories listed in fleet.json,
+# one at a time, on the self-hosted runner next to the demo DashVERSE.
+# Each repository keeps its own .resqui.json (its own indicator set) and
+# uploads with its own DashVERSE token (its own user and project).
+# Commit a change to fleet.json (for example a new ref) to run it again.
+# No pull_request trigger: a public repository must not run fork code on a
+# self-hosted runner.
+on:
+  push:
+    branches: ['demo/fleet']
+    paths: ['fleet.json', '.github/workflows/fleet.yml']
+
+jobs:
+  plan:
+    runs-on: [self-hosted, dashverse-demo]
+    outputs:
+      fleet: ${{ steps.read.outputs.fleet }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: read
+        run: echo "fleet=$(jq -c . fleet.json)" >> "$GITHUB_OUTPUT"
+
+  assess:
+    needs: plan
+    runs-on: [self-hosted, dashverse-demo]
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include: ${{ fromJSON(needs.plan.outputs.fleet) }}
+    name: ${{ matrix.repo }}@${{ matrix.ref }}
+    steps:
+      # resqui assesses the repository checked out in the workspace (its
+      # origin remote and HEAD commit).
+      - uses: actions/checkout@v7
+        with:
+          repository: thodkatz/${{ matrix.repo }}
+          ref: ${{ matrix.ref }}
+
+      - name: Check software quality indicators
+        id: quality
+        uses: BiodataAnalysisGroup/eosc-arena-software-quality-action@dashverse-upload
+        with:
+          config: .resqui.json
+          fail-on: fail,not_run
+          dashverse-token: ${{ secrets[matrix.secret] }}
+          # The runner shares the host network with DashVERSE.
+          dashverse-endpoint: http://127.0.0.1:3000
+
+      - name: DashVERSE upload
+        if: always()
+        env:
+          UPLOADED: ${{ steps.quality.outputs.uploaded }}
+        run: echo "Uploaded to DashVERSE - $UPLOADED"

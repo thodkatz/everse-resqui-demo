@@ -1,0 +1,6 @@
+[
+  { "repo": "dashverse-demo-exemplary",  "ref": "main", "secret": "DASHVERSE_TOKEN_EXEMPLARY" },
+  { "repo": "dashverse-demo-pipeline",   "ref": "main", "secret": "DASHVERSE_TOKEN_PIPELINE" },
+  { "repo": "dashverse-demo-thesis",     "ref": "main", "secret": "DASHVERSE_TOKEN_THESIS" },
+  { "repo": "dashverse-demo-simulation", "ref": "main", "secret": "DASHVERSE_TOKEN_SIMULATION" }
+]
